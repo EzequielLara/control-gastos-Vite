@@ -1,14 +1,16 @@
 import { useState } from 'react';
 import CerrarBtn from '../img/cerrar.svg';
+import { generarId} from '../helpers'
 import Mensaje from './Mensaje';
 
 const Modal = ({setModal, animarModal, setAnimarModal, gastos, setGastos}) => {
    
     const [nombreGasto, setNombreGasto] = useState('');
-    const [cantidad, setCantidad] = useState();
+    const [cantidad, setCantidad] = useState('');
     const [categoria, setCategoria] = useState('');
     
     const [error, setError] = useState(false);
+  
     const ocultarModal =()=>{
         setAnimarModal(false);
         
@@ -16,25 +18,39 @@ const Modal = ({setModal, animarModal, setAnimarModal, gastos, setGastos}) => {
             setModal(false);
             
         }, 500);
-    }
+    };
+
+    const guardarGasto=()=>{
+        
+        setGastos([...gastos, {
+            id : generarId(),
+            nombreGasto,
+            cantidad,
+            categoria
+        }])
+
+    };
+
+    const resetearFormularioModal = ()=>{
+
+        setNombreGasto('');
+        setCantidad('');
+        setCategoria('');
+
+    };
 
     const handleSubmit =(e)=>{
+
         e.preventDefault();
         console.log('Botón pulsado');
+
         if([nombreGasto, cantidad, categoria].includes('')){
             setError(true);
             return;
         }
         setError(false);
-        setGastos([...gastos, {
-            nombre : nombreGasto,
-            cantidad : cantidad,
-            categoria : categoria
-        }])
-        setNombreGasto('');
-        setCantidad('');
-        setCategoria('')
-
+        guardarGasto();
+        resetearFormularioModal();
     }
 
     return (
@@ -67,7 +83,7 @@ const Modal = ({setModal, animarModal, setAnimarModal, gastos, setGastos}) => {
                         type='number'
                         placeholder='Añade cantidad del Gasto'
                         value={cantidad}
-                        onChange= {e=>{setCantidad(e.target.value)}}
+                        onChange= {e=>{setCantidad(Number(e.target.value))}}
                     />
                 </div>
                 <div className='campo'>
