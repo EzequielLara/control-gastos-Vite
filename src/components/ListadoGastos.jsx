@@ -5,7 +5,7 @@ const ListadoGastos = ({gastos}) => {
         <>
             <div className='listado-gastos contenedor'>
                 <h2>{gastos.length ? 
-                gastos.map( (gasto, index) =>
+                gastos.map(gasto =>
                     <Gasto
                         key = {gasto.id}
                         gasto ={gasto}

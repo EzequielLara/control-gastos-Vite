@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import CerrarBtn from '../img/cerrar.svg';
-import { generarId} from '../helpers'
+import { generarFecha, generarId} from '../helpers'
 import Mensaje from './Mensaje';
 
 const Modal = ({setModal, animarModal, setAnimarModal, gastos, setGastos}) => {
@@ -17,13 +17,15 @@ const Modal = ({setModal, animarModal, setAnimarModal, gastos, setGastos}) => {
         setTimeout(() => {
             setModal(false);
             
-        }, 500);
+        }, 300);
     };
 
     const guardarGasto=()=>{
+     
         
         setGastos([...gastos, {
             id : generarId(),
+            fecha : generarFecha(),
             nombreGasto,
             cantidad,
             categoria
@@ -51,6 +53,7 @@ const Modal = ({setModal, animarModal, setAnimarModal, gastos, setGastos}) => {
         setError(false);
         guardarGasto();
         resetearFormularioModal();
+        ocultarModal();
     }
 
     return (
