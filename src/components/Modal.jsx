@@ -30,6 +30,7 @@ const Modal = ({setModal, animarModal, setAnimarModal, gastos, setGastos}) => {
             cantidad,
             categoria
         }])
+        
 
     };
 

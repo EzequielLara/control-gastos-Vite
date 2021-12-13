@@ -23,6 +23,7 @@ const Gasto = ({gasto}) => {
             <div className="contenido-gasto">
                 <img 
                     src={diccionarioIconos[gasto.categoria]}
+                    alt='imagen de categoria'
                 />
                 <div className="descripcion-gasto">
                     <p className="categoria">{gasto.categoria}</p>
