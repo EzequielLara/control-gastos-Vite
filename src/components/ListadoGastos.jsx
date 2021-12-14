@@ -10,6 +10,7 @@ const ListadoGastos = ({gastos, setGastoEditar}) => {
                         key = {gasto.id}
                         gasto ={gasto}
                         setGastoEditar ={setGastoEditar}
+
                     /> )
                 : 'No hay Gastos aún'}
                 </h2>
