@@ -74,6 +74,7 @@ function App() {
                    gastos={gastos}
                    setGastos={setGastos}
                    gastoEditar ={gastoEditar}
+                   setGastoEditar ={setGastoEditar}
       />}
     </div>
 

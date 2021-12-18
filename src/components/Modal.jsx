@@ -3,7 +3,14 @@ import CerrarBtn from '../img/cerrar.svg';
 import { generarFecha, generarId} from '../helpers'
 import Mensaje from './Mensaje';
 
-const Modal = ({setModal, animarModal, setAnimarModal, gastos, setGastos, gastoEditar}) => {
+const Modal = ({
+    setModal, 
+    animarModal, 
+    setAnimarModal, 
+    gastos, 
+    setGastos, 
+    gastoEditar,
+    setGastoEditar}) => {
     
     const [nombreGasto, setNombreGasto] = useState('');
     const [cantidad, setCantidad] = useState('');
@@ -37,7 +44,24 @@ const Modal = ({setModal, animarModal, setAnimarModal, gastos, setGastos, gastoE
    
 
     const guardarGasto = ()=>{
-        
+        if(gastoEditar.id){
+
+            const gastoNuevo = {
+
+                id : gastoEditar.id,
+                fecha : generarFecha(),
+                nombreGasto,
+                cantidad,
+                categoria
+            }
+            //Actualizar
+            const gastosActualizados = gastos.map(gastoState=>gastoState.id === gastoEditar.id ? gastoNuevo : gastoState)
+            console.log(gastosActualizados);
+            setGastos(gastosActualizados);
+            setGastoEditar({})
+            return;
+        }
+
         setGastos([...gastos, {
             id : generarId(),
             fecha : generarFecha(),
