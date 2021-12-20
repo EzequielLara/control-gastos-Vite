@@ -56,7 +56,7 @@ const Modal = ({
             }
             //Actualizar
             const gastosActualizados = gastos.map(gastoState=>gastoState.id === gastoEditar.id ? gastoNuevo : gastoState)
-            console.log(gastosActualizados);
+            
             setGastos(gastosActualizados);
             setGastoEditar({})
             return;
