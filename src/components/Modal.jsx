@@ -34,7 +34,7 @@ const Modal = ({
 
     const ocultarModal =()=>{
         setAnimarModal(false);
-        
+        setGastoEditar({})
         setTimeout(() => {
             setModal(false);
             
